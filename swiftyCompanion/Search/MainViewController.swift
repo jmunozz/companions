@@ -28,7 +28,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         DispatchQueue.main.async {
             let user = self.results[indexPath.row]
             self.search.text = user.login
-            self.resultTable.isHidden = true
+            self.changeButtonConstraint(false)
             self.lastCompletion = true
         }
     }
@@ -109,8 +109,8 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         self.resultTable.register(UserCell.self, forCellReuseIdentifier: "userCell")
         setViews()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissTable))
-        self.mainView.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissTable))
+//        self.mainView.addGestureRecognizer(tap)
     }
     
     func setViews() {
@@ -219,6 +219,10 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        changeButtonConstraint(false)
+    }
+    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         print("FINISHHHHH")
     }
@@ -236,7 +240,4 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         
     }
     
-    @objc func dismissTable() {
-        self.resultTable.isHidden = true
-    }
 }

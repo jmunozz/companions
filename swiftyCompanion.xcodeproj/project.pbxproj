@@ -15,7 +15,7 @@
 		8C22E381201F9564006FF5BF /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C22E380201F9564006FF5BF /* UserCell.swift */; };
 		8C22E383201FA000006FF5BF /* ResultTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C22E382201FA000006FF5BF /* ResultTableView.swift */; };
 		8C861A4E20178A7F00191C84 /* FavorisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C861A4D20178A7F00191C84 /* FavorisManager.swift */; };
-		8C861A5020178C8800191C84 /* FavorisTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C861A4F20178C8800191C84 /* FavorisTableViewController.swift */; };
+		8C861A5020178C8800191C84 /* FavorisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C861A4F20178C8800191C84 /* FavorisViewController.swift */; };
 		8C861A55201791C900191C84 /* FavorisDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C861A53201791C900191C84 /* FavorisDataModel.xcdatamodeld */; };
 		8C861A5C2017934500191C84 /* Favoris+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C861A5A2017934500191C84 /* Favoris+CoreDataClass.swift */; };
 		8C861A5D2017934500191C84 /* Favoris+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C861A5B2017934500191C84 /* Favoris+CoreDataProperties.swift */; };
@@ -29,6 +29,7 @@
 		8C8BDE88201630CA0008F99C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BDE87201630CA0008F99C /* LoginViewController.swift */; };
 		8CE90E9A201751E200060EB4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE90E99201751E200060EB4 /* TabBarViewController.swift */; };
 		8CE90E9C201753B300060EB4 /* FavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE90E9B201753B300060EB4 /* FavViewController.swift */; };
+		C8C354E5201FE68F00427F1A /* FavCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C354E4201FE68F00427F1A /* FavCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +41,7 @@
 		8C22E380201F9564006FF5BF /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		8C22E382201FA000006FF5BF /* ResultTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableView.swift; sourceTree = "<group>"; };
 		8C861A4D20178A7F00191C84 /* FavorisManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorisManager.swift; sourceTree = "<group>"; };
-		8C861A4F20178C8800191C84 /* FavorisTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorisTableViewController.swift; sourceTree = "<group>"; };
+		8C861A4F20178C8800191C84 /* FavorisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorisViewController.swift; sourceTree = "<group>"; };
 		8C861A54201791C900191C84 /* FavorisDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavorisDataModel.xcdatamodel; sourceTree = "<group>"; };
 		8C861A5A2017934500191C84 /* Favoris+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favoris+CoreDataClass.swift"; path = "swiftyCompanion/Favoris+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8C861A5B2017934500191C84 /* Favoris+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favoris+CoreDataProperties.swift"; path = "swiftyCompanion/Favoris+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		8C8BDE87201630CA0008F99C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8CE90E99201751E200060EB4 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8CE90E9B201753B300060EB4 /* FavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavViewController.swift; sourceTree = "<group>"; };
+		C8C354E4201FE68F00427F1A /* FavCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 		8C8BDE702015F3A10008F99C /* swiftyCompanion */ = {
 			isa = PBXGroup;
 			children = (
+				C8C354E3201FE5A700427F1A /* Fav */,
 				8C22E37F201F926D006FF5BF /* Api */,
 				8C22E37E201F9244006FF5BF /* Search */,
 				8C22E373201F42AA006FF5BF /* Login */,
@@ -131,12 +134,20 @@
 				8C8BDE7A2015F3A10008F99C /* LaunchScreen.storyboard */,
 				8C8BDE7D2015F3A10008F99C /* Info.plist */,
 				8CE90E99201751E200060EB4 /* TabBarViewController.swift */,
-				8C861A4F20178C8800191C84 /* FavorisTableViewController.swift */,
 				8CE90E9B201753B300060EB4 /* FavViewController.swift */,
 				8C861A4D20178A7F00191C84 /* FavorisManager.swift */,
 				8C861A53201791C900191C84 /* FavorisDataModel.xcdatamodeld */,
 			);
 			path = swiftyCompanion;
+			sourceTree = "<group>";
+		};
+		C8C354E3201FE5A700427F1A /* Fav */ = {
+			isa = PBXGroup;
+			children = (
+				8C861A4F20178C8800191C84 /* FavorisViewController.swift */,
+				C8C354E4201FE68F00427F1A /* FavCell.swift */,
+			);
+			path = Fav;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C861A55201791C900191C84 /* FavorisDataModel.xcdatamodeld in Sources */,
-				8C861A5020178C8800191C84 /* FavorisTableViewController.swift in Sources */,
+				8C861A5020178C8800191C84 /* FavorisViewController.swift in Sources */,
 				8C8BDE742015F3A10008F99C /* MainViewController.swift in Sources */,
 				8C8BDE842015FA1C0008F99C /* APIRequests.swift in Sources */,
 				8C861A5D2017934500191C84 /* Favoris+CoreDataProperties.swift in Sources */,
@@ -224,6 +235,7 @@
 				8C22E383201FA000006FF5BF /* ResultTableView.swift in Sources */,
 				8C22E37D201F5E4C006FF5BF /* Helpers.swift in Sources */,
 				8C861A4E20178A7F00191C84 /* FavorisManager.swift in Sources */,
+				C8C354E5201FE68F00427F1A /* FavCell.swift in Sources */,
 				8C22E377201F5A5C006FF5BF /* SectionView.swift in Sources */,
 				8C8BDE88201630CA0008F99C /* LoginViewController.swift in Sources */,
 				8C22E381201F9564006FF5BF /* UserCell.swift in Sources */,

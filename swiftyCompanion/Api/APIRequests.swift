@@ -67,6 +67,7 @@ class APIRequests {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(self.TOKEN!)", forHTTPHeaderField: "Authorization")
+        print(urlRequest)
         
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             //Error has been thrown
@@ -79,6 +80,11 @@ class APIRequests {
                 let h = r as! HTTPURLResponse
                 if h.statusCode < 200 || h.statusCode >= 300 {
                     print("Status code is \(h.statusCode)")
+                    if h.statusCode == 403 {
+                        print("from here")
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 200000)) {                            self.getUserByLogin(login: login, callback: callback)
+                        }
+                    }
                     return
                 }
             }
@@ -124,6 +130,10 @@ class APIRequests {
                 let h = r as! HTTPURLResponse
                 if h.statusCode < 200 || h.statusCode >= 300 {
                     print("Status code is \(h.statusCode)")
+                    if h.statusCode == 403 {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 200000)) {                            self.getUserById(id: id, callback: callback)
+                        }
+                    }
                     return
                 }
             }
@@ -166,6 +176,10 @@ class APIRequests {
                 let h = r as! HTTPURLResponse
                 if h.statusCode < 200 || h.statusCode >= 300 {
                     print("Status code is \(h.statusCode)")
+                    if h.statusCode == 403 {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 200000)) {                            self.getUserRangeByLogin(login: login, callback: callback)
+                        }
+                    }
                     return
                 }
             }
@@ -189,5 +203,4 @@ class APIRequests {
         }
         return self.API!
     }
-    
 }

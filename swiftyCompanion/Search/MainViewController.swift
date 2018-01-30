@@ -34,6 +34,8 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     
+    var buttonTopConstraint1: NSLayoutConstraint? = nil
+    var buttonTopConstraint2: NSLayoutConstraint? = nil
     var lastCompletion: Bool = false
     var results: [User] = []
     let apiManager: APIRequests = APIRequests.getAPIManager()
@@ -106,6 +108,9 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         self.resultTable.dataSource = self
         self.resultTable.register(UserCell.self, forCellReuseIdentifier: "userCell")
         setViews()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissTable))
+        self.mainView.addGestureRecognizer(tap)
     }
     
     func setViews() {
@@ -143,12 +148,15 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         self.resultTable.leftAnchor.constraint(equalTo: search.leftAnchor).isActive = true
         self.resultTable.rightAnchor.constraint(equalTo: search.rightAnchor).isActive = true
         self.resultTable.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor).isActive = true
-        self.resultTable.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        self.resultTable.heightAnchor.constraint(equalToConstant: 160).isActive = true
         self.resultTable.isHidden = true
         
         // Set Button
         self.mainView.addSubview(button)
-        self.button.topAnchor.constraint(equalTo: self.resultTable.bottomAnchor, constant: 10).isActive = true
+        self.buttonTopConstraint1 = self.button.topAnchor.constraint(equalTo: self.mainView.centerYAnchor, constant: 15)
+        self.buttonTopConstraint2 = self.button.topAnchor.constraint(equalTo: self.resultTable.bottomAnchor, constant: 15)
+        self.buttonTopConstraint1?.isActive = true
+        self.buttonTopConstraint2?.isActive = false
         self.button.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor).isActive = true
         self.button.heightAnchor.constraint(equalToConstant: 45).isActive = true
         self.button.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -195,20 +203,40 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         }
         
         if searchText == "" {
-            self.resultTable.isHidden = true
-
+            changeButtonConstraint(false)
         } else {
             let login = searchText
             apiManager.getUserRangeByLogin(login: login) { users in
                 if users != nil {
                     print(users!)
                     DispatchQueue.main.async {
+                        self.changeButtonConstraint(true)
                         self.results = users!
                         self.resultTable.reloadData()
                     }
                 }
             }
-            self.resultTable.isHidden = false
         }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("FINISHHHHH")
+    }
+    
+    func changeButtonConstraint(_ toggled: Bool ) {
+        if toggled == true {
+            self.buttonTopConstraint1?.isActive = false
+            self.buttonTopConstraint2?.isActive = true
+        } else {
+            self.buttonTopConstraint1?.isActive = true
+            self.buttonTopConstraint2?.isActive = false
+        }
+        self.mainView.setNeedsLayout()
+        self.resultTable.isHidden = (toggled == true) ? false : true
+        
+    }
+    
+    @objc func dismissTable() {
+        self.resultTable.isHidden = true
     }
 }

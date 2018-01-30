@@ -1,31 +1,29 @@
 //
-//  UserCell.swift
+//  FavCell.swift
 //  swiftyCompanion
 //
-//  Created by Jordan MUNOZ on 1/29/18.
+//  Created by Jordan Munoz on 30/01/2018.
 //  Copyright © 2018 Jordan MUNOZ. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class UserCell: UITableViewCell {
+
+class FavCell: UITableViewCell {
     
-    var user: User? = nil {
+    var profile: Favoris? = nil {
         didSet {
-            if let uLogin = user!.login {
-                login.text = uLogin
-            }
+            login.text = profile!.login
         }
     }
     
     let login: UILabel = {
+        let blue = UIColor(red:0.12, green:0.73, blue:0.73, alpha:1.0)
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
-        l.text = "login"
-        l.textColor = UIColor(red:0.12, green:0.73, blue:0.73, alpha:1.0)
-        l.textAlignment = .left
-        l.font = UIFont(name: l.font.fontName, size: 18)
+        l.textColor = blue
+        l.font = UIFont(name: l.font.fontName, size: 35)
         return l
     }()
     
@@ -39,12 +37,15 @@ class UserCell: UITableViewCell {
     }
     
     func setViews() {
+        
         let black = UIColor(red:0.16, green:0.18, blue:0.22, alpha:1.0)
         self.backgroundColor = black
         
+        // Set login
         self.addSubview(login)
         login.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 10).isActive = true
         login.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
-        login.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor).isActive = true
+        login.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 7).isActive = true
+        login.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -7).isActive = true
     }
 }

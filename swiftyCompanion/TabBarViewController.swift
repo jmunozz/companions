@@ -11,7 +11,7 @@ import UIKit
 class TabBarViewController: UITabBarController {
     
     let favorisManager = FavorisManager()
-    let fav: FavorisTableViewController = FavorisTableViewController()
+    let fav: FavorisViewController = FavorisViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +33,8 @@ class TabBarViewController: UITabBarController {
     
     func refreshFavorisTabView() {
         self.fav.favoris = favorisManager.getAllFavoris()
-        self.fav.tableView.reloadData()
+        self.fav.favorisTableView.reloadData()
     }
-    
 }
 
 
